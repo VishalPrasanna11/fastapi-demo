@@ -1,16 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
-from app.main import app, users_db, next_user_id
-
-
-@pytest.fixture(autouse=True)
-def reset_db():
-    """Reset the database before each test"""
-    users_db.clear()
-    import app.main
-    app.main.next_user_id = 1
-    yield
-    users_db.clear()
+from app.main import app
 
 
 @pytest.fixture
